@@ -2,7 +2,7 @@ var mongo = require('mongodb').MongoClient;
 var table = require('./display.js');
 var caseTask = process.argv[2];
 var numberOfRecords = Number(process.argv[3]);
-
+	fg
 // -----sorting--------
 var dynamicSort = function (property) {
 	var sortOrder = 1;
