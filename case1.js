@@ -2,6 +2,7 @@ var mongo = require('mongodb').MongoClient;
 var table = require('./display.js');
 var caseTask = process.argv[2];
 var numberOfRecords = Number(process.argv[3]);
+numberOfRecords = numberOfRecords === undefined ? 10 : Number(numberOfRecords);
 // -----sorting--------
 var dynamicSort = function (property) {
 	var sortOrder = 1;
@@ -19,7 +20,6 @@ var dynamicSort = function (property) {
 var uniqueTrainCounter =[];
 var hourToMinute = function (results) {
 	for(i = 0; i < results.length; i += 1 ) {
-		// console.log(result)
 		a = results[i].arrivalTime.slice(1,9);
 		b = a.split(':');
 		results[i].minutes = (+b[0]) * 60  + (+b[1])+ (+b[2]);
@@ -223,7 +223,5 @@ train = mongo.connect('mongodb://localhost:27017/trainSchedule', function(err, d
 		console.log('Find and print 10 shortest routes in terms of number of stations.');
 		console.log('Find and print 10 most visited stations.');
 		console.log('Find and print 10 least visited stations.');
-
 	}
-
- });
+});
